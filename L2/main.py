@@ -9,11 +9,12 @@ test2 = TestLab2()
 for i in range(100, 501, 100):
     A = np.random.randint(low=1, high=10, size=(i, i)) / 10000
     f = np.random.randint(low=1, high=10, size=i) / 10000
-    flag = False
+    flag = True
     for row in A:
         m = max(abs(i) for i in row)
-        if m >= sum(abs(i) for i in row)/2:
-            flag = True
+        if m < sum(abs(i) for i in row)/2:
+            flag = False
+            break
 
     test1.test_gauss(A, f)
     test2.test_gauss(A, f)
