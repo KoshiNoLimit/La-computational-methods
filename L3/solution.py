@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def jacobi(A0, b0, x0, iterations):
+def jacobi(A0, b0, x0, eps):
     """Метод Якоби решения СЛАУ"""
     A, b, x = np.copy(A0), np.copy(b0), np.copy(x0)
 
@@ -13,7 +13,10 @@ def jacobi(A0, b0, x0, iterations):
     if np.linalg.norm(B) >= 1:
         raise Exception('Для данной матрицы метод не сходится')
 
-    for _ in range(iterations):
+    x_copy = np.copy(x)
+    while True:
         x = np.matmul(B, x) + c
-
-    return x
+        if np.linalg.norm(x-x_copy) < eps:
+            return x
+        else:
+            x_copy = np.copy(x)

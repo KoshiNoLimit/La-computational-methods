@@ -5,7 +5,7 @@ from matplotlib import pyplot
 
 
 def calc_matrix(x):
-    m = np.zeros((len(x), len(x)), dtype = float )
+    m = np.zeros((len(x), len(x)), dtype=float)
     for i in range(1, len(x)):
         for j in range(1, i+1):
             m[i, j] = np.prod([x[i]-x[k] for k in range(j)])
@@ -16,8 +16,8 @@ def calc_matrix(x):
     return m
 
 
-x = np.array([1.0, 2.0, 3.0, 4.0])
-f = np.array([1.0, -1.0, 5.0, 4.0])
+x = np.array([0.0, -1.0, 1.0])
+f = np.array([0.0, 2.0, 2.0])
 C = calc_matrix(x)
 
 res_gauss = gauss(C, f)
@@ -37,7 +37,7 @@ print(res_gauss)
 print(res_gauss_boost)
 print(res_np)
 
-xes = np.linspace(0.0, 10.0, num=20)
+xes = np.linspace(-10.0, 10.0, num=20)
 
 pyplot.plot(xes, get_y(xes, res_gauss), label='gauss', lw=2)
 pyplot.plot(xes, get_y(xes, res_gauss_boost), label='gauss_boost', lw=2)

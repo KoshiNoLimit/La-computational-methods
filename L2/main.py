@@ -16,8 +16,8 @@ for i in range(100, 501, 100):
             flag = False
             break
 
-    test1.test_gauss(A, f)
-    test2.test_gauss(A, f)
+    # test1.test_gauss(A, f)
+    # test2.test_gauss(A, f)
 
     res1 = L1.solution.gauss(A, f)
     res2 = L2.solution.gauss_boost(A, f)
